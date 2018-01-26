@@ -9,13 +9,14 @@ import javax.persistence.*
 data class PagamentoJogador(
         @Id @GeneratedValue
         val id: Long = 0,
-        val anoMesReferencia: LocalDate,
+
+        val anoMesReferencia: LocalDate? = null,
 
         @ManyToOne(fetch = FetchType.LAZY)
         @JoinColumn(name = "idJogador", referencedColumnName = "id")
-        val jogador: Jogador,
+        val jogador: Jogador? = null,
 
         val valor: BigDecimal = BigDecimal.ZERO,
-        val createdAt: LocalDateTime? = null,
+        var createdAt: LocalDateTime? = null,
         val deletedAt: LocalDateTime? = null) {
 }

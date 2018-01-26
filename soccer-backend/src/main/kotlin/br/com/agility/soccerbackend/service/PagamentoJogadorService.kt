@@ -6,6 +6,7 @@ import br.com.agility.soccerbackend.repository.PagamentoJogadorRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.util.function.Consumer
 
 @Service
@@ -31,8 +32,18 @@ class PagamentoJogadorService {
         return listaPagamentos;
     }
 
-    fun save(pagamentoJogador: PagamentoJogador) {
-        pagamentoJogadorRepository.save(pagamentoJogador);
+    fun add(pagamentoJogador: PagamentoJogador): PagamentoJogador {
+        pagamentoJogador.createdAt = LocalDateTime.now();
+        return pagamentoJogadorRepository.save(pagamentoJogador);
+    }
+
+    fun alter(id: Long, pagamentoJogador: PagamentoJogador): PagamentoJogador? {
+        if (pagamentoJogadorRepository.exists(id)) {
+            val safePagamentoJogador = pagamentoJogador.copy(id);
+            return pagamentoJogadorRepository.save(safePagamentoJogador);
+        }
+
+        return PagamentoJogador();
     }
 
     fun delete(pagamentoJogador: PagamentoJogador) {
