@@ -1,41 +1,60 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import {SeletorMesModule} from './seletor-mes/seletor-mes.module';
-import {
-  ButtonModule, CalendarModule, DataTableModule, DialogModule, InputMaskModule,
-  InputTextModule
-} from 'primeng/primeng';
-import {FormsModule} from '@angular/forms';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {HttpClientModule} from '@angular/common/http';
-import { routing } from './app.routes';
-import { ListagemPagamentosComponent } from './listagem-pagamentos/listagem-pagamentos.component';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+
+
+import {AppComponent} from './app.component';
+import {PesquisaJogadorComponent} from './pesquisa-jogador/pesquisa-jogador.component';
 import {NavbarComponent} from './navbar/navbar.component';
-import {PagamentoService} from './listagem-pagamentos/PagamentoService';
-import {JogadorService} from './listagem-pagamentos/JogadorService';
+import {CalendarModule, DataTableModule, InputMaskModule, InputTextModule, ToolbarModule} from 'primeng/primeng';
+import { CadastroJogadorComponent } from './cadastro-jogador/cadastro-jogador.component';
+import {RouterModule, Routes} from '@angular/router';
+import {HttpClientModule} from '@angular/common/http';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule} from '@angular/forms';
+import {ButtonModule} from 'primeng/button';
+import {JogadorService} from './service/jogador.service';
+import {TableModule} from 'primeng/table';
+import {MenubarModule} from 'primeng/menubar';
+import {PanelModule} from 'primeng/panel';
+
+const appRoutes: Routes = [
+  {path: 'jogadores', component: PesquisaJogadorComponent},
+  {path: 'jogadores/novo', component: CadastroJogadorComponent},
+  {path: 'jogadores/editar/:id', component: CadastroJogadorComponent},
+  {path: '',
+    redirectTo: '/jogadores',
+    pathMatch: 'full'}
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListagemPagamentosComponent,
-    NavbarComponent
+    PesquisaJogadorComponent,
+    NavbarComponent,
+    CadastroJogadorComponent
   ],
   imports: [
+    RouterModule.forRoot(
+      appRoutes,
+      {enableTracing: true} // <-- debugging purposes only
+    ),
     BrowserModule,
-    SeletorMesModule,
     HttpClientModule,
-    routing,
     BrowserAnimationsModule,
     FormsModule,
+
     DataTableModule,
+    TableModule,
     ButtonModule,
     InputTextModule,
     InputMaskModule,
     CalendarModule,
-    DialogModule
+    MenubarModule,
+    PanelModule,
+    ToolbarModule
   ],
-  providers: [ PagamentoService, JogadorService ],
+  providers: [JogadorService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

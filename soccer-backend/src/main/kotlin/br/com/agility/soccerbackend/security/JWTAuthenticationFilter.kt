@@ -7,7 +7,7 @@ import javax.servlet.ServletRequest
 import javax.servlet.ServletResponse
 import javax.servlet.http.HttpServletRequest
 
-class JWTAuthenticationFilter : GenericFilterBean() {
+class   JWTAuthenticationFilter : GenericFilterBean() {
 
     override fun doFilter(request: ServletRequest?, response: ServletResponse?, filterChain: FilterChain?) {
         var authentication = TokenAuthenticationService().getAuthentication(request as HttpServletRequest);

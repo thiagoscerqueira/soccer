@@ -6,7 +6,6 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter
 
 @Configuration
 @EnableWebSecurity
@@ -16,10 +15,12 @@ class WebSecurityConfig : WebSecurityConfigurerAdapter() {
         http?.csrf()?.disable()?.authorizeRequests()
                 ?.antMatchers("/home")?.permitAll()
                 ?.antMatchers(HttpMethod.POST, "/login")?.permitAll()
-                ?.anyRequest()?.authenticated()
+                ?.anyRequest()?.permitAll();
+
+        /*.authenticated()
                 ?.and()
                 ?.addFilterBefore(JwtLoginFilter("/login", authenticationManager()), UsernamePasswordAuthenticationFilter::class.java)
-                ?.addFilterBefore(JWTAuthenticationFilter(), UsernamePasswordAuthenticationFilter::class.java)
+                ?.addFilterBefore(JWTAuthenticationFilter(), UsernamePasswordAuthenticationFilter::class.java)*/
     }
 
     override fun configure(auth: AuthenticationManagerBuilder?) {

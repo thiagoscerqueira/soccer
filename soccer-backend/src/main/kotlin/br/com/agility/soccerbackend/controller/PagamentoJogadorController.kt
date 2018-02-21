@@ -8,6 +8,7 @@ import java.time.LocalDate
 
 @RestController
 @RequestMapping("/pagamentos-jogadores")
+@CrossOrigin
 class PagamentoJogadorController {
 
     @Autowired
