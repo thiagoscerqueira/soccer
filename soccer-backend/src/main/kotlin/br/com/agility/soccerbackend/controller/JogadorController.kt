@@ -20,13 +20,23 @@ class JogadorController {
         return ResponseEntity.ok(jogadorService.list());
     }
 
-    @PostMapping
-    fun add(@RequestBody jogador: Jogador): ResponseEntity<Jogador> {
-        return ResponseEntity(jogadorService.add(jogador), HttpStatus.CREATED);
+    @GetMapping("/{id}")
+    fun get(@PathVariable id: Long): ResponseEntity<Jogador> {
+        val jogador: Jogador? = jogadorService.get(id);
+        if (jogador == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(jogador);
     }
 
-    @PutMapping("{id}")
+    @PostMapping
+    fun add(@RequestBody jogador: Jogador): ResponseEntity<Jogador> {
+        return ResponseEntity.status(HttpStatus.CREATED).body(jogadorService.add(jogador));
+    }
+
+    @PutMapping("/{id}")
     fun update(@PathVariable id: Long, @RequestBody jogador: Jogador): ResponseEntity<Jogador> {
-        return ResponseEntity(jogadorService.alter(id, jogador), HttpStatus.ACCEPTED);
+        return ResponseEntity.status(HttpStatus.ACCEPTED).body(jogadorService.alter(id, jogador));
     }
 }

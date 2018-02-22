@@ -37,7 +37,7 @@ class PagamentoJogadorService {
         return pagamentoJogadorRepository.save(pagamentoJogador);
     }
 
-    fun alter(id: Long, pagamentoJogador: PagamentoJogador): PagamentoJogador? {
+    fun alter(id: Long, pagamentoJogador: PagamentoJogador): PagamentoJogador {
         if (pagamentoJogadorRepository.exists(id)) {
             val safePagamentoJogador = pagamentoJogador.copy(id);
             return pagamentoJogadorRepository.save(safePagamentoJogador);

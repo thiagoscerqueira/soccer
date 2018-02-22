@@ -16,15 +16,8 @@ import {JogadorService} from './service/jogador.service';
 import {TableModule} from 'primeng/table';
 import {MenubarModule} from 'primeng/menubar';
 import {PanelModule} from 'primeng/panel';
+import {AppRoutingModule} from './app-routing.module';
 
-const appRoutes: Routes = [
-  {path: 'jogadores', component: PesquisaJogadorComponent},
-  {path: 'jogadores/novo', component: CadastroJogadorComponent},
-  {path: 'jogadores/editar/:id', component: CadastroJogadorComponent},
-  {path: '',
-    redirectTo: '/jogadores',
-    pathMatch: 'full'}
-];
 
 @NgModule({
   declarations: [
@@ -34,15 +27,11 @@ const appRoutes: Routes = [
     CadastroJogadorComponent
   ],
   imports: [
-    RouterModule.forRoot(
-      appRoutes,
-      {enableTracing: true} // <-- debugging purposes only
-    ),
+    AppRoutingModule,
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-
     DataTableModule,
     TableModule,
     ButtonModule,

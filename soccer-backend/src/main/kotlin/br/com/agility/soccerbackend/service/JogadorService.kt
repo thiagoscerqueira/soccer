@@ -16,6 +16,10 @@ class JogadorService {
         return jogadorRepository.findAll();
     }
 
+    fun get(id: Long) : Jogador {
+        return jogadorRepository.findOne(id);
+    }
+
     fun add(jogador: Jogador): Jogador {
         jogador.createdAt = LocalDateTime.now();
         return jogadorRepository.save(jogador);

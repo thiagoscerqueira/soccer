@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {JogadorService} from '../service/jogador.service';
 import {MenuItem} from 'primeng/api';
+import {Jogador} from '../model/model';
 
 @Component({
   selector: 'app-pesquisa-jogador',
@@ -9,14 +10,23 @@ import {MenuItem} from 'primeng/api';
 })
 export class PesquisaJogadorComponent implements OnInit {
 
-  itens = [];
+  private itens: Jogador[];
   private menuItems: MenuItem[];
+  private cols: any[];
 
   constructor(private jogadorService: JogadorService) { }
 
   ngOnInit() {
     this.consultar();
     this.buildMenuItems();
+    this.buildCols();
+  }
+
+  private buildCols() {
+    this.cols = [
+      { field: 'nome', header: 'Nome' },
+      { field: 'email', header: 'E-mail' }
+    ];
   }
 
   private buildMenuItems() {

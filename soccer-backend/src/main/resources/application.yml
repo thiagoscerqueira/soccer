@@ -3,8 +3,13 @@ spring:
     url: jdbc:hsqldb:file:database/main/db
     username: sa
     driver-class-name: org.hsqldb.jdbc.JDBCDriver
+
   jpa:
     properties.hibernate.dialect: org.hibernate.dialect.HSQLDialect
     hibernate:
       ddl-auto: update
     show-sql: true
+  jackson:
+    date-format: yyyy-MM-dd
+server:
+  port: 8081

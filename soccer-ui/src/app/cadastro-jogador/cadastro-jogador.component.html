@@ -1,3 +1,26 @@
-<p>
-  cadastro-jogador works!
-</p>
+<div class="container">
+
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+    <div class="ui-g">
+      <div class="ui-g-12">
+        <h1>{{editando ? 'Alterar Jogador' : 'Novo Jogador'}}</h1>
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>Nome</label>
+        <input pInputText type="text" name="nome" [(ngModel)]="jogador.nome" #nome="ngModel" required minlength="5">
+      </div>
+
+      <div class="ui-g-12 ui-md-6 ui-fluid">
+        <label>E-mail</label>
+        <input pInputText type="text" name="email" [(ngModel)]="jogador.email" #nome="ngModel" required minlength="5">
+      </div>
+
+      <div class="ui-g-12">
+        <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
+        <button pButton type="button" label="Nova" (click)="novo(f)"></button>
+      </div>
+
+    </div>
+  </form>
+</div>
