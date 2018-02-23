@@ -20,7 +20,13 @@ export class CadastroJogadorComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private messageService: MessageService,
-    private fb: FormBuilder) {}
+    fb: FormBuilder) {
+
+    this.fg = fb.group({
+      nome: [''],
+      email: ['', Validators.email]
+    });
+  }
 
   ngOnInit() {
     const idJogador = this.route.snapshot.params['id'];
@@ -28,11 +34,6 @@ export class CadastroJogadorComponent implements OnInit {
     if (idJogador) {
       this.jogadorService.consultar(idJogador).subscribe(jogador => this.jogador = jogador);
     }
-
-    this.fg = this.fb.group({
-      nome: [''],
-      email: ['', Validators.email]
-    });
   }
 
   get editando() {
