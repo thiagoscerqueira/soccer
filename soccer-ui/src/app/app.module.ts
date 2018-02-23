@@ -42,8 +42,6 @@ import {MessageService} from 'primeng/components/common/messageservice';
     InputMaskModule,
     CalendarModule,
     MenubarModule,
-    PanelModule,
-    ToolbarModule,
     GrowlModule
   ],
   providers: [JogadorService, MessageService],
