@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {Jogador} from '../model/model';
 import {JogadorService} from '../service/jogador.service';
 import {ActivatedRoute, Router} from '@angular/router';
-import {FormControl} from '@angular/forms';
+import {FormControl, FormGroup, Validators, FormsModule, ReactiveFormsModule, FormBuilder} from '@angular/forms';
+import {MessageService} from 'primeng/components/common/messageservice';
 
 @Component({
   selector: 'app-cadastro-jogador',
@@ -12,11 +13,14 @@ import {FormControl} from '@angular/forms';
 export class CadastroJogadorComponent implements OnInit {
 
   jogador = new Jogador();
+  fg: FormGroup;
 
   constructor(
     private jogadorService: JogadorService,
     private route: ActivatedRoute,
-    private router: Router) {}
+    private router: Router,
+    private messageService: MessageService,
+    private fb: FormBuilder) {}
 
   ngOnInit() {
     const idJogador = this.route.snapshot.params['id'];
@@ -24,6 +28,11 @@ export class CadastroJogadorComponent implements OnInit {
     if (idJogador) {
       this.jogadorService.consultar(idJogador).subscribe(jogador => this.jogador = jogador);
     }
+
+    this.fg = this.fb.group({
+      nome: [''],
+      email: ['', Validators.email]
+    });
   }
 
   get editando() {
@@ -45,12 +54,14 @@ export class CadastroJogadorComponent implements OnInit {
 
   private adicionaJogador() {
     this.jogadorService.adicionar(this.jogador).subscribe(jogadorAdicionado => {
-      this.router.navigate(['/jogadores'], jogadorAdicionado.id);
+      this.messageService.add({severity: 'success', summary: 'Jogador adicionado com sucesso'});
+      this.router.navigate(['/jogadores', jogadorAdicionado.id]);
     });
   }
 
   private alteraJogador() {
     this.jogadorService.alterar(this.jogador).subscribe(jogadorAlterado => {
+      this.messageService.add({severity: 'success', summary: 'Jogador alterado com sucesso'});
       this.jogador = jogadorAlterado;
     });
   }

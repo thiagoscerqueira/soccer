@@ -1,6 +1,6 @@
 <div class="container">
 
-  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)">
+  <form #f="ngForm" autocomplete="off" (ngSubmit)="salvar(f)" [formGroup]="fg">
     <div class="ui-g">
       <div class="ui-g-12">
         <h1>{{editando ? 'Alterar Jogador' : 'Novo Jogador'}}</h1>
@@ -8,17 +8,19 @@
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>Nome</label>
-        <input pInputText type="text" name="nome" [(ngModel)]="jogador.nome" #nome="ngModel" required minlength="5">
+        <input pInputText type="text" formControlName="nome" [(ngModel)]="jogador.nome"   required minlength="5">
       </div>
 
       <div class="ui-g-12 ui-md-6 ui-fluid">
         <label>E-mail</label>
-        <input pInputText type="text" name="email" [(ngModel)]="jogador.email" #nome="ngModel" required minlength="5">
+        <input pInputText type="text" name="email" formControlName="email" [(ngModel)]="jogador.email" minlength="5">
       </div>
 
       <div class="ui-g-12">
         <button pButton type="submit" label="Salvar" [disabled]="f.invalid"></button>
-        <button pButton type="button" label="Nova" (click)="novo(f)"></button>
+        <button pButton type="button" label="Novo" (click)="novo(f)"></button>
+
+        <a routerLink="/jogadores">Voltar para a pesquisa</a>
       </div>
 
     </div>

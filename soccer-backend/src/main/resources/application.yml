@@ -1,4 +1,8 @@
+
 spring:
+  jackson:
+    serialization:
+      WRITE_DATES_AS_TIMESTAMPS: false
   datasource:
     url: jdbc:hsqldb:file:database/main/db
     username: sa
@@ -9,7 +13,6 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-  jackson:
-    date-format: yyyy-MM-dd
 server:
   port: 8081
+

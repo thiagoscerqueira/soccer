@@ -10,13 +10,15 @@ import { CadastroJogadorComponent } from './cadastro-jogador/cadastro-jogador.co
 import {RouterModule, Routes} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
 import {JogadorService} from './service/jogador.service';
 import {TableModule} from 'primeng/table';
 import {MenubarModule} from 'primeng/menubar';
 import {PanelModule} from 'primeng/panel';
 import {AppRoutingModule} from './app-routing.module';
+import {GrowlModule} from 'primeng/growl';
+import {MessageService} from 'primeng/components/common/messageservice';
 
 
 @NgModule({
@@ -32,6 +34,7 @@ import {AppRoutingModule} from './app-routing.module';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     DataTableModule,
     TableModule,
     ButtonModule,
@@ -40,9 +43,10 @@ import {AppRoutingModule} from './app-routing.module';
     CalendarModule,
     MenubarModule,
     PanelModule,
-    ToolbarModule
+    ToolbarModule,
+    GrowlModule
   ],
-  providers: [JogadorService],
+  providers: [JogadorService, MessageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

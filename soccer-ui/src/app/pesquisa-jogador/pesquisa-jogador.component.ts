@@ -38,7 +38,7 @@ export class PesquisaJogadorComponent implements OnInit {
   }
 
   private consultar() {
-    this.jogadorService.listar().subscribe(dados => this.itens = dados.sort((a, b) => (a.nome > b.nome ? 1 : -1)));
+    this.jogadorService.listar().subscribe(dados => this.itens = dados);
   }
 
   excluir(id) {

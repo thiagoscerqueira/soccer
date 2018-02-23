@@ -12,7 +12,9 @@ data class Jogador   (
 
         var nome: String = "",
         val email: String = "",
+
         var createdAt: LocalDateTime? = null,
+
         val deletedAt: LocalDateTime? = null) {
 
 

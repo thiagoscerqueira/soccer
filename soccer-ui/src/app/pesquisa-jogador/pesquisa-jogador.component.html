@@ -7,7 +7,7 @@
   <div class="ui-g" style="margin: 0 auto">
     <div class="ui-g-12">
 
-      <p-table [value]="itens" [responsive]="true">
+      <p-table [value]="itens" [responsive]="true" sortField="nome">
         <ng-template pTemplate="header">
           <tr>
             <th *ngFor="let col of cols">{{col.header}}</th>

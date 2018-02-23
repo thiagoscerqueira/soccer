@@ -32,3 +32,6 @@ body {
   text-align: center !important;
 }
 
+label {
+  font-weight: bold;
+}
