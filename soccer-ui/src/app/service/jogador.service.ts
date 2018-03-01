@@ -10,7 +10,7 @@ export class JogadorService {
   constructor(private http: HttpClient) { }
 
   listar() {
-    return this.http.get<Jogador>(this.jogadorUrl);
+    return this.http.get<Jogador[]>(this.jogadorUrl);
   }
 
   excluir(id) {
@@ -19,11 +19,11 @@ export class JogadorService {
   }
 
   adicionar(item: Jogador) {
-    return this.http.post(this.jogadorUrl, item);
+    return this.http.post<Jogador>(this.jogadorUrl, item);
   }
 
   alterar(item: Jogador) {
-    return this.http.put(`${this.jogadorUrl}/${item.id}`, item);
+    return this.http.put<Jogador>(`${this.jogadorUrl}/${item.id}`, item);
   }
 
   consultar(id) {

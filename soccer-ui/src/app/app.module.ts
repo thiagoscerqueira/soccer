@@ -19,6 +19,8 @@ import {PanelModule} from 'primeng/panel';
 import {AppRoutingModule} from './app-routing.module';
 import {GrowlModule} from 'primeng/growl';
 import {MessageService} from 'primeng/components/common/messageservice';
+import { PizzaChartComponent } from './pizza-chart/pizza-chart.component';
+import {ChartModule} from 'primeng/chart';
 
 
 @NgModule({
@@ -26,7 +28,8 @@ import {MessageService} from 'primeng/components/common/messageservice';
     AppComponent,
     PesquisaJogadorComponent,
     NavbarComponent,
-    CadastroJogadorComponent
+    CadastroJogadorComponent,
+    PizzaChartComponent
   ],
   imports: [
     AppRoutingModule,
@@ -42,7 +45,8 @@ import {MessageService} from 'primeng/components/common/messageservice';
     InputMaskModule,
     CalendarModule,
     MenubarModule,
-    GrowlModule
+    GrowlModule,
+    ChartModule
   ],
   providers: [JogadorService, MessageService],
   bootstrap: [AppComponent]

@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="ui-g">
+    <div class="ui-g-12 ui-md-6 ui-fluid">
+      <label>Labels</label>
+      <input pInputText type="text" [(ngModel)]="labels" (keyup)="atualizaChart()">
+    </div>
+
+    <div class="ui-g-12 ui-md-6 ui-fluid">
+      <label>Valores</label>
+      <input pInputText type="text" [(ngModel)]="values" (keyup)="atualizaChart()">
+    </div>
+
+    <div class="ui-g-12">
+      <p-chart  type="pie" [data]="chartData" (onDataSelect)="onSelect($event)"></p-chart>
+    </div>
+
+  </div>
+</div>

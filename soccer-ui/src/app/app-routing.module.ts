@@ -2,11 +2,13 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import {PesquisaJogadorComponent} from './pesquisa-jogador/pesquisa-jogador.component';
 import {CadastroJogadorComponent} from './cadastro-jogador/cadastro-jogador.component';
+import {PizzaChartComponent} from './pizza-chart/pizza-chart.component';
 
 const appRoutes: Routes = [
   {path: 'jogadores', component: PesquisaJogadorComponent},
   {path: 'jogadores/novo', component: CadastroJogadorComponent},
   {path: 'jogadores/:id', component: CadastroJogadorComponent},
+  {path: 'pizza', component: PizzaChartComponent},
   {path: '', redirectTo: '/jogadores', pathMatch: 'full'}
 ];
 
