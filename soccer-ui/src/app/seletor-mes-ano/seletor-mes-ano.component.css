@@ -1,0 +1,24 @@
+.seletor-mes-ano {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 17em;
+  border: 1px solid #d9d9d9;
+  background: linear-gradient(to bottom, #f6f7f9 0%, #ebedf0 100%);
+  margin: 0 auto;
+}
+
+.navegacao {
+  cursor: pointer;
+  width: 1.8em;
+  height: 1.8em;
+  display: flex;
+  align-items: center;
+}
+
+.textoMesAno {
+  font-family: "Roboto", "Trebuchet MS", Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  font-weight: normal;
+  -webkit-font-smoothing: antialiased;
+}

@@ -21,6 +21,8 @@ import {GrowlModule} from 'primeng/growl';
 import {MessageService} from 'primeng/components/common/messageservice';
 import { PizzaChartComponent } from './pizza-chart/pizza-chart.component';
 import {ChartModule} from 'primeng/chart';
+import { PesquisaPagamentoJogadorComponent } from './pesquisa-pagamento-jogador/pesquisa-pagamento-jogador.component';
+import { SeletorMesAnoComponent } from './seletor-mes-ano/seletor-mes-ano.component';
 
 
 @NgModule({
@@ -29,7 +31,9 @@ import {ChartModule} from 'primeng/chart';
     PesquisaJogadorComponent,
     NavbarComponent,
     CadastroJogadorComponent,
-    PizzaChartComponent
+    PizzaChartComponent,
+    PesquisaPagamentoJogadorComponent,
+    SeletorMesAnoComponent
   ],
   imports: [
     AppRoutingModule,
