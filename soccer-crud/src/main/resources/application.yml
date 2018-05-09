@@ -1,0 +1,6 @@
+spring:
+  profiles:
+    active: @build.profile.id@
+
+server:
+  context-path: /soccercrud
